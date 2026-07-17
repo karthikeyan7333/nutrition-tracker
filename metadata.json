@@ -1,0 +1,6 @@
+{
+  "name": "Nutrition Tracker",
+  "description": "A premium, dark-themed personal nutrition tracker with calorie, protein, fiber, water, vitamin, and mineral tracking, dynamic daily goals, progress charts, and Gemini-powered nutrition analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

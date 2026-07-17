@@ -1,0 +1,75 @@
+{
+  "users": [
+    {
+      "id": "mnxp2x4evwjztytp6s2cgf",
+      "email": "admin123@gmail.com",
+      "createdAt": "2026-07-06T09:27:49.303Z",
+      "passwordHash": "$2b$10$8VIwc7.fugb.eACLoP42muVrh096P2/V84dI7VHH8pjj3Ar9Vitqy"
+    }
+  ],
+  "goals": [
+    {
+      "userId": "mnxp2x4evwjztytp6s2cgf",
+      "calories": 2500,
+      "protein": 120,
+      "fiber": 30,
+      "water": 3500,
+      "vitamins": 100,
+      "minerals": 100,
+      "updatedAt": "2026-07-06T09:27:49.303Z"
+    }
+  ],
+  "foodLogs": [
+    {
+      "foodName": "egg",
+      "weight": 2,
+      "calories": 3,
+      "protein": 0.3,
+      "fiber": 0,
+      "vitamins": 0,
+      "minerals": 0,
+      "date": "2026-07-06",
+      "time": "14:58",
+      "id": "mxsdtyk3odhknnv8bfdn4k",
+      "userId": "mnxp2x4evwjztytp6s2cgf",
+      "createdAt": "2026-07-06T09:28:26.986Z"
+    },
+    {
+      "foodName": "egg",
+      "weight": 100,
+      "calories": 155,
+      "protein": 13,
+      "fiber": 0,
+      "vitamins": 20,
+      "minerals": 12,
+      "date": "2026-07-06",
+      "time": "14:59",
+      "id": "nguh95oafhrxv1ro7izv3",
+      "userId": "mnxp2x4evwjztytp6s2cgf",
+      "createdAt": "2026-07-06T09:29:33.196Z"
+    },
+    {
+      "foodName": "oats",
+      "weight": 50,
+      "calories": 195,
+      "protein": 8.5,
+      "fiber": 5.3,
+      "vitamins": 3,
+      "minerals": 13,
+      "date": "2026-07-06",
+      "time": "14:59",
+      "id": "fb19b54nxcddnciex1sqg",
+      "userId": "mnxp2x4evwjztytp6s2cgf",
+      "createdAt": "2026-07-06T09:29:44.364Z"
+    }
+  ],
+  "waterLogs": [
+    {
+      "id": "o2h5jlpmljpst8ka2dotze",
+      "userId": "mnxp2x4evwjztytp6s2cgf",
+      "amount": 250,
+      "date": "2026-07-06",
+      "createdAt": "2026-07-06T09:28:00.086Z"
+    }
+  ]
+}
