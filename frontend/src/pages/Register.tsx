@@ -42,7 +42,7 @@ export default function Register() {
     setError("");
 
     try {
-      const response = await api.post("/auth/register", { email, password });
+      const response = await api.post("/api/auth/register", { email, password });
       localStorage.setItem("nutrition_tracker_token", response.data.token);
       localStorage.setItem("nutrition_tracker_user", JSON.stringify(response.data.user));
       navigate("/");
