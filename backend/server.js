@@ -1,0 +1,30 @@
+import cors from 'cors';
+import express from 'express';
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
+import { connectDatabase } from './config/database.js';
+import { env } from './config/env.js';
+import { errorHandler, notFound } from './middleware/errorHandler.js';
+import authRoutes from './routes/authRoutes.js';
+import foodLogRoutes from './routes/foodLogRoutes.js';
+import goalRoutes from './routes/goalRoutes.js';
+import progressRoutes from './routes/progressRoutes.js';
+import waterLogRoutes from './routes/waterLogRoutes.js';
+
+const app = express();
+const allowedOrigins = env.clientUrl.split(',').map((url) => url.trim()).filter(Boolean);
+app.use(helmet());
+app.use(cors({ origin(origin, callback) { if (!origin || allowedOrigins.includes(origin)) return callback(null, true); callback(new Error('Origin is not allowed by CORS')); }, methods: ['GET', 'POST', 'PUT', 'DELETE'], allowedHeaders: ['Content-Type', 'Authorization'] }));
+app.use(express.json({ limit: '100kb' }));
+app.use('/api', rateLimit({ windowMs: 15 * 60 * 1000, max: 300, standardHeaders: true, legacyHeaders: false }));
+app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
+app.use('/api/auth', authRoutes);
+app.use('/api/goals', goalRoutes);
+app.use('/api/food-log', foodLogRoutes);
+app.use('/api/water-log', waterLogRoutes);
+app.use('/api/progress', progressRoutes);
+app.use(notFound);
+app.use(errorHandler);
+
+await connectDatabase();
+app.listen(env.port, '0.0.0.0', () => console.log(`API listening on port ${env.port}`));

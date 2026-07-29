@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { createFoodLog, deleteFoodLog, getFoodLogs, updateFoodLog } from '../controllers/foodLogController.js';
+import { authenticateToken } from '../middleware/auth.js';
+import { asyncHandler } from '../utils/asyncHandler.js';
+const router = Router();
+router.use(authenticateToken);
+router.get('/', asyncHandler(getFoodLogs));
+router.post('/', asyncHandler(createFoodLog));
+router.put('/:id', asyncHandler(updateFoodLog));
+router.delete('/:id', asyncHandler(deleteFoodLog));
+export default router;
