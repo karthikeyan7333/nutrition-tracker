@@ -31,7 +31,7 @@ export default function Login() {
     setError("");
 
     try {
-      const response = await api.post("/api/auth/login", { email, password });
+      const response = await api.post("/auth/login", { email, password });
       localStorage.setItem("nutrition_tracker_token", response.data.token);
       localStorage.setItem("nutrition_tracker_user", JSON.stringify(response.data.user));
       navigate("/");

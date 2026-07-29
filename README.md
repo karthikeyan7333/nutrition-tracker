@@ -37,7 +37,7 @@ Create a Web Service from this repository. `render.yaml` supplies the backend ro
 
 ### Vercel frontend
 
-Import the repository and set the Vercel project Root Directory to `frontend`. Configure `VITE_API_BASE_URL` as `https://YOUR-RENDER-SERVICE.onrender.com/api`. `frontend/vercel.json` ensures browser-route refreshes load the React application.
+Import the repository and set the Vercel project Root Directory to `frontend`. Configure `VITE_API_BASE_URL` as `https://YOUR-RENDER-SERVICE.onrender.com` (without a trailing slash). The Axios client adds the required `/api` prefix; a legacy value that already ends in `/api` is also accepted. Redeploy Vercel after changing this build-time variable. `frontend/vercel.json` ensures browser-route refreshes load the React application.
 
 ## Migration notes
 

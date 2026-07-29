@@ -1,8 +1,18 @@
 import axios from "axios";
 
-// Create Axios client pointing to our API routes
+const configuredApiUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+
+// The backend mounts every route beneath /api. Accept either a Render origin
+// (https://service.onrender.com) or the complete API URL
+// (https://service.onrender.com/api) so a missing suffix in Vercel cannot make
+// requests target /auth/* instead of /api/auth/*.
+const apiBaseUrl = configuredApiUrl
+  ? `${configuredApiUrl.replace(/\/$/, "").replace(/\/api$/, "")}/api`
+  : "/api";
+
+// Create Axios client pointing to the Express API prefix.
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "/api",
+  baseURL: apiBaseUrl,
   headers: {
     "Content-Type": "application/json",
   },
