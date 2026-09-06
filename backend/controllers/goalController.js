@@ -16,6 +16,16 @@ export async function updateGoals(req, res) {
       update[field] = value;
     }
   }
-  const goals = await Goal.findOneAndUpdate({ userId: req.user.id }, { $set: update, $setOnInsert: DEFAULT_GOALS }, { new: true, upsert: true, runValidators: true, setDefaultsOnInsert: true });
+  // An upsert cannot update the same path through both $set and $setOnInsert.
+  // Keep defaults only for fields omitted from this request, so submitted goals
+  // remain the inserted values as well as the updated values.
+  const insertDefaults = Object.fromEntries(
+    Object.entries(DEFAULT_GOALS).filter(([field]) => update[field] === undefined),
+  );
+  const goals = await Goal.findOneAndUpdate(
+    { userId: req.user.id },
+    { $set: update, $setOnInsert: insertDefaults },
+    { new: true, upsert: true, runValidators: true, setDefaultsOnInsert: false },
+  );
   res.json(goals);
 }
